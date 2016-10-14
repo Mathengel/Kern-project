@@ -19,7 +19,7 @@
     <div id="totals" ng-hide="singleChosen">
       <p><span id="resultsCount">{{results.length}}</span> / <span id="totalCount">{{texts.length}}</span></p>
     </div>
-    <div class="searchables" ng-show = "hover">
+    <div class="searchables" ng-if = "hover" ng-hide = "results.length < 8 || singleChosen" ng-cloak>
       <p><span>Title: </span>{{textDeets.title}}</p>
       <p>
         <br>
@@ -30,14 +30,13 @@
       <p><span>Phrase: </span>{{textDeets.phrase}}</p>
       <p><span>Shapes: </span>{{textDeets.shapes}}</p>
     </div>
-    <div class="searchables caroselDeets" ng-show = "results.length < 8 || singleChosen">
-      <p><span>Title: </span>{{slideDeets.title}}</p>
+    <div class="caroselDeets" ng-show = "results.length < 8 || singleChosen" ng-cloak >
+      <p><span>Title: </span>{{single.title}}</p>
       <br>
-      <br>
-      <p><span>Colors: </span>{{slideDeets.colors}}</p>
-      <p><span>Qualities: </span>{{slideDeets.description}}</p>
-      <p><span>Phrase: </span>{{slideDeets.phrase}}</p>
-      <p><span>Shapes: </span>{{slideDeets.shapes}}</p>
+      <p><span>Colors: </span>{{single.colors}}</p>
+      <p><span>Qualities: </span>{{single.description}}</p>
+      <p><span>Phrase: </span>{{single.phrase}}</p>
+      <p><span>Shapes: </span>{{single.shapes}}</p>
     </div>
   </div>
 </div>
@@ -49,24 +48,24 @@
     <div ng-show="!singleChosen">
       <div ng-show="!detail">
         <div ng-repeat="text in texts | filter: multiFilter as results "  ng-hide="!isCurrentSlideIndex($index)">
-          <img class = "nonDraggableImage slide " ng-src="{{text.large}}" alt="{{text.title}}"  ng-mousemove="slideDetail(text)" >
-        </div>
-        <a class="arrow prev" href="#/text" ng-click="nextSlide()"></a>
-        <a class="arrow next" href="#/text" ng-click="prevSlide()"></a>
+          <img class = "nonDraggableImage slide " ng-src="{{text.large}}" alt="{{text.title}}"  >
+        <a class="arrow prev" href="#/text" ng-click="nextSlide(results[($index+1)%results.length])"></a>
+        <a class="arrow next" href="#/text" ng-click="prevSlide((results[(($index-1)<0?results.length-1:$index-1)]))"></a>
+      </div>
       </div>
 
       <!-- Detail CAROUSEL -->
       <div ng-show="detail">
-        <img class = "nonDraggableImage slide" ng-src="{{text.detail}}" alt="{{text.title}}" ng-repeat="text in texts | filter: multiFilter as results "  ng-mousemove="slideDetail(text)" ng-hide="!isCurrentSlideIndex($index)">
-        <a class="detailArrow prev" href="#/text" ng-click="nextSlide()"></a>
-        <a class="detailArrow next" href="#/text" ng-click="prevSlide()"></a>
+        <img class = "nonDraggableImage slide" ng-src="{{text.detail}}" alt="{{text.title}}" ng-repeat="text in texts | filter: multiFilter as results "   ng-hide="!isCurrentSlideIndex($index)">
+        <a class="detailArrow prev" href="#/text" ng-click="nextSlide(results[($index+1)%results.length])"></a>
+        <a class="detailArrow next" href="#/text" ng-click="prevSlide((results[(($index-1)<0?results.length-1:$index-1)]))"></a>
       </div>
     </div>
 
     <!-- Single Texture -->
     <div ng-show="singleChosen">
-        <img ng-show="!detail" class = "nonDraggableImage slide " ng-src="{{single.large}}" alt="{{single.title}}"  ng-mousemove="slideDetail(single)" ng-click="singleChosen = false">
-        <img ng-show="detail" class = "nonDraggableImage slide" ng-src="{{single.detail}}" alt="{{single.title}}"  ng-mousemove="slideDetail(single)" ng-click="singleChosen = false">
+        <img ng-show="!detail" class = "nonDraggableImage slide " ng-src="{{single.large}}" alt="{{single.title}}"  ng-click="singleChosen = false">
+        <img ng-show="detail" class = "nonDraggableImage slide" ng-src="{{single.detail}}" alt="{{single.title}}"  ng-click="singleChosen = false">
     </div>
   </div>
 

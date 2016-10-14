@@ -12,12 +12,13 @@ function textCtrl($scope, textFctry){
     }
     getTexts();
 
+
+    $scope.singleChosen = false;
+
     //SELECT One
     $scope.one = function(text){
-
       $scope.singleChosen = true;
       $scope.single = text;
-
     }
 
     //SEARCH TERM hover
@@ -71,6 +72,14 @@ function textCtrl($scope, textFctry){
       $scope.propertyName = propertyName;
     };
 
+    //SCOPE WATCH...
+    $scope.$watch('results.length', function(){
+      // if($scope.results){
+        $scope.single = $scope.results[0]
+        $scope.apply();
+      // }
+    })
+
     //IMAGE CAROUSEL
 
     //sets the current index to 0, the start
@@ -84,10 +93,12 @@ function textCtrl($scope, textFctry){
     $scope.isCurrentSlideIndex = function (index) {
         return $scope.currentSlideIndex === index;
     };
-    $scope.prevSlide = function () {
+    $scope.prevSlide = function (text) {
+      $scope.single = text;
         $scope.currentSlideIndex = ($scope.currentSlideIndex < $scope.results.length - 1) ? ++$scope.currentSlideIndex : 0;
     };
-    $scope.nextSlide = function () {
+    $scope.nextSlide = function (text) {
+      $scope.single = text;
         $scope.currentSlideIndex = ($scope.currentSlideIndex > 0) ? --$scope.currentSlideIndex : $scope.results.length - 1;
     };
 

@@ -156,7 +156,15 @@
 
 .caroselDeets{
     margin-top: 85px;
+    width: 150px;
 }
+.caroselDeets p{
+    color: #455440;
+}
+.caroselDeets span{
+    color: #6D95A9;
+}
+
 
 .slider {
     width: 800px;

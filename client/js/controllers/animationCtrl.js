@@ -25,12 +25,11 @@ function animationCtrl($scope, animationFctry){
       } else {
         $scope.clicked = true;
       }
-
-
       console.log("one was clicked", animation._id)
       animationFctry.show (animation, function (response){
         console.log("response from factory.index", response)
         $scope.single = response.data;
+        $scope.apply();
       })
     }
 
