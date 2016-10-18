@@ -29,7 +29,7 @@
   .indexHeader h1{
     font-family: Gallery;
     color: #252D32;
-    font-weight: bold;
+    /*font-weight: bold;*/
     /*margin-right: 10px;*/
   }
 
@@ -80,8 +80,9 @@
     font-weight: bolder;
   }
 
-/*TEXTURES PAGE TEXTURES PAGE TEXTURES PAGE TEXTURES PAGE TEXTURES PAGE TEXTURES PAGE*/
 
+
+/*TEXTURES PAGE TEXTURES PAGE TEXTURES PAGE TEXTURES PAGE TEXTURES PAGE TEXTURES PAGE*/
 
 .searchBox input{
   margin-top: 20px;
@@ -148,6 +149,9 @@
 .searchables span{
   color: #6D95A9;
 }
+.attributes p{
+  font-size: 10px;
+}
 
 /*slider tutorial stuff*/
 
@@ -167,7 +171,7 @@
 
 
 .slider {
-    width: 800px;
+    width: 1000px;
     height: 1000px;
     overflow: hidden;
     position: relative;
@@ -178,9 +182,8 @@
     position: absolute;
     top: 0px;
     /*left: 150px;*/
-    /*height: 500px;
-    width: 500px;*/
-
+    /*height: 800px;
+    width: 800px;*/
 }
 
 
@@ -203,7 +206,7 @@
     position: absolute;
     z-index: 1002;
     display: block;
-    top: 30%;
+    top: 35%;
     margin-top: -35px;
     width: 36px;
     height: 71px;

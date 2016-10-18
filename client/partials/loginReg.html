@@ -1,21 +1,18 @@
 <div class="indexHeader col-md-3">
   <a href="/#/"><h1>Lewis Engel</h1></a>
-  <a href="/#/about">About</a> | <a href="/#/contact">Contact</a>
+  <div class="worksBox">
+    <a href="/logout"><span class="colorSix">Log Out</span></a>
+  </div>
 </div>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-<body>
+<div class="col-md-9">
+
     <h1>Login</h1>
 
     <form ng-submit="login(admin)">
         <input type="text" ng-model="admin.adminName" placeholder="Admin Name">
         <input type="text" ng-model="admin.password" placeholder="Password">
-        <input class="btn btn-primary" type="submit" value="Login">
+        <input class="btn btn-sm btn-primary" type="submit" value="Login">
     </form>
 
     <h1>Register</h1>
@@ -24,7 +21,6 @@
     <form ng-submit="register(newAdmin)">
         <input type="text" ng-model="newAdmin.adminName" placeholder="Admin Name">
         <input type="text" ng-model="newAdmin.password" placeholder="Password">
-        <input class="btn btn-success" type="submit" value="Register">
+        <input class="btn btn-sm btn-success" type="submit" value="Register">
     </form>
-</body>
-</html>
+  </div>

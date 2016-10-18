@@ -1,11 +1,11 @@
-<div class="indexHeader col-md-3">
+<div class="indexHeader col-md-2">
   <a href="/#/"><h1>Lewis Engel</h1></a>
 
   <div class="worksBox">
     <a href="/#/about"><span class="colorFive">About</span></a>
     <a href="/#/contact"><span class="colorSix">Contact</span></a>
     <br>
-    <a href="#/animation" ><span class="colorThree">Animations</span></a>
+    <a href="#/animation" ><span class="colorThree">Emergence over Time</span></a>
     <br>
     <br>
     <a href="#/text" ng-show = "results.length < 8 || singleChosen" ng-click="detail = !detail" ><span class="colorTwo">Detail</span></a>
@@ -21,37 +21,36 @@
     </div>
     <div class="searchables" ng-if = "hover" ng-hide = "results.length < 8 || singleChosen" ng-cloak>
       <p><span>Title: </span>{{textDeets.title}}</p>
-      <p>
-        <br>
-        Searchable Terms:
-      </p>
+      <p><span>Phrase: </span>{{textDeets.phrase}}</p>
+      <span class="attributes">
       <p><span>Colors: </span>{{textDeets.colors}}</p>
       <p><span>Qualities: </span>{{textDeets.description}}</p>
-      <p><span>Phrase: </span>{{textDeets.phrase}}</p>
       <p><span>Shapes: </span>{{textDeets.shapes}}</p>
+      </span>
     </div>
     <div class="caroselDeets" ng-show = "results.length < 8 || singleChosen" ng-cloak >
       <p><span>Title: </span>{{single.title}}</p>
-      <br>
+      <p><span>Phrase: </span>{{single.phrase}}</p>
+      <span class="attributes">
       <p><span>Colors: </span>{{single.colors}}</p>
       <p><span>Qualities: </span>{{single.description}}</p>
-      <p><span>Phrase: </span>{{single.phrase}}</p>
       <p><span>Shapes: </span>{{single.shapes}}</p>
+      </span>
     </div>
   </div>
 </div>
 
   <!-- CAROSEL -->
-  <div id="Carousel" class = "col-md-9 slider large " ng-show = "results.length < 8 || singleChosen">
+  <div id="Carousel" class = "col-md-10" ng-show = "results.length < 8 || singleChosen">
 
     <!-- Main CAROUSEL -->
-    <div ng-show="!singleChosen">
+    <div ng-show="!singleChosen" class="slider">
       <div ng-show="!detail">
         <div ng-repeat="text in texts | filter: multiFilter as results "  ng-hide="!isCurrentSlideIndex($index)">
           <img class = "nonDraggableImage slide " ng-src="{{text.large}}" alt="{{text.title}}"  >
         <a class="arrow prev" href="#/text" ng-click="nextSlide(results[($index+1)%results.length])"></a>
         <a class="arrow next" href="#/text" ng-click="prevSlide((results[(($index-1)<0?results.length-1:$index-1)]))"></a>
-      </div>
+        </div>
       </div>
 
       <!-- Detail CAROUSEL -->
